@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 import shutil
 
 
@@ -81,7 +82,7 @@ def normalize(name):
     return finally_name
 
 
-def sort_file(folder_name=""):
+def sort_file(folder_name):
     path = Path(folder_name)
 
     if path.exists():
@@ -158,4 +159,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 1:
+        folder_name = sys.argv[1]
+        sort_file(folder_name)
+    else:
+        main()
