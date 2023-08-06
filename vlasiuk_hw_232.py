@@ -1,6 +1,7 @@
 import time
 from threading import Condition, Thread
-from multiprocessing import Pool, cpu_count
+import concurrent.futures
+from multiprocessing import cpu_count
 
 
 def factorize(number):
@@ -34,8 +35,9 @@ def factorize_list_sync(numbers):
 
 
 def factorize_list_parallel(numbers):
-    with Pool(processes=cpu_count()) as pool:
-        result = pool.map(factorize, numbers)
+    num_cores = cpu_count()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=num_cores) as execut:
+        result = list(execut.map(factorize, numbers))
     return result
 
 if __name__ == '__main__':
