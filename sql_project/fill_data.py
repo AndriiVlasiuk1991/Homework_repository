@@ -70,7 +70,10 @@ def populate_database():
 
     # Заповнення Students
     students = create_random_students(num_students)
-    cur.executemany("INSERT INTO Students (FirstName, LastName, BirthYear) VALUES (?, ?, ?)", students)
+    students_with_group = [(first_name, last_name, birth_year, randint(1, num_groups)) for
+                           first_name, last_name, birth_year in students]
+    cur.executemany("INSERT INTO Students (FirstName, LastName, BirthYear, GroupID) VALUES (?, ?, ?, ?)",
+                    students_with_group)
     con.commit()
 
     # Заповнення Groups
