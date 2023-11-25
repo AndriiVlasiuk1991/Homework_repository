@@ -1,0 +1,31 @@
+{% extends 'authors/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <form action="{% url 'authors:authors' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="author_fullname" class="form-label">Author fullname:</label>
+            <div> {{ form.fullname }} </div>
+            <span>{{form.errors.fullname}}</span>
+        </div>
+        <div class="mb-3">
+            <label for="author_born_date" class="form-label">Author born date:</label>
+            <div> {{ form.born_date }} </div>
+            <span>{{form.errors.born_date}}</span>
+        </div>
+        <div class="mb-3">
+            <label for="author_born_location" class="form-label">Author born location:</label>
+            <div> {{ form.born_loc }} </div>
+            <span>{{form.errors.born_loc}}</span>
+        </div>
+        <div class="mb-3">
+            <label for="author_biography" class="form-label">Author biography:</label>
+            <div> {{ form.biography }} </div>
+            <span>{{form.errors.biography}}</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add author</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'authors/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    {% if form.errors and form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+    <form action="{% url 'authors:tag' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="Enter_new_tag" class="form-label">Enter a new tag:</label>
+            <div> {{ form.name }}</div>
+            <span>{{form.errors.name}}</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add tag</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</div>
+{% endblock %}
