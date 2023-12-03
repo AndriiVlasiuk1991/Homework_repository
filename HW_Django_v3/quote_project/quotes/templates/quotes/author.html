@@ -1,0 +1,33 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <form method="POST" action="{% url 'quotes:author' %}">
+        {% csrf_token %}
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Author fullname:</label>
+            <div> {{ form.fullname }} </div>
+            <span>{{form.errors.fullname}}</span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Author born date:</label>
+            <div> {{ form.born_date }} </div>
+            <span>{{form.errors.born_date}}</span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Author born location:</label>
+            <div> {{ form.born_location }} </div>
+            <span>{{form.errors.born_location}}</span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Author biography:</label>
+            <div> {{ form.description }} </div>
+            <span>{{form.errors.description}}</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Author</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</div>
+{% endblock %}
