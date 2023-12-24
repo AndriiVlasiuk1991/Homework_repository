@@ -38,7 +38,7 @@ async def update_contact(body: ContactSchema, contact_id: int, db: AsyncSession,
     if contact:
         contact.name = body.name
         contact.surname = body.surname
-        contact.email = body.email
+
         contact.phone = body.phone
         contact.birth_day = body.birth_day
         contact.vaccinated = body.vaccinated

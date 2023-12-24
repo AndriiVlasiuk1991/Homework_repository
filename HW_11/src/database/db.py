@@ -24,7 +24,7 @@ class DatabaseSessionManager:
             await session.close()
 
 
-sessionmanager = DatabaseSessionManager(config.SQLALCHEMY_DATABASE_URL)
+sessionmanager = DatabaseSessionManager(config.DB_URL)
 
 
 async def get_db():

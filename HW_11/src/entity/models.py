@@ -15,7 +15,7 @@ class Contacts(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     name: Mapped[str] = mapped_column(String(50), nullable=False)
     surname: Mapped[str] = mapped_column(String(50), nullable=False)
-    email: Mapped[str] = mapped_column(String(150), unique=True, index=True, nullable=False)
+
     phone: Mapped[str] = mapped_column(String(50))
     birth_day: Mapped[date] = mapped_column(DateTime, nullable=True)
     vaccinated: Mapped[bool] = mapped_column(Boolean, default=False)
@@ -37,8 +37,11 @@ class User(Base):
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     username: Mapped[str] = mapped_column(String(50))
+    email: Mapped[str] = mapped_column(String(150), unique=True, index=True, nullable=False)
     password: Mapped[str] = mapped_column(String(150), nullable=False)
     refresh_token: Mapped[str] = mapped_column(String(250), nullable=True)
     created_at: Mapped[date] = mapped_column("created_at", DateTime, default=func.now())
     updated_at: Mapped[date] = mapped_column("updated_at", DateTime, default=func.now(), onupdate=func.now())
     role: Mapped[Enum] = mapped_column("role", Enum(Role), default=Role.user)
+    confirmed:  Mapped[bool] = mapped_column(Boolean, default=False, nullable=True)
+    avatar: Mapped[str] = mapped_column(String(250), nullable=True)

@@ -1,7 +1,7 @@
 from datetime import datetime, date
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel
 
 from src.schemas.user import UserResponse
 
@@ -9,7 +9,6 @@ from src.schemas.user import UserResponse
 class ContactSchema(BaseModel):
     name: str
     surname: str
-    email: EmailStr
     phone: str
     birth_day: date | None
     vaccinated: Optional[bool] = False
