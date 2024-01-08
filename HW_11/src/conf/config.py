@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     REDIS_PASSWORD: str | None = None
     CLD_NAME: str = "AV"
     CLD_API_KEY: int = "132698283185694"
-    CLD_API_SECRET: str
+    CLD_API_SECRET: str | None = None
 
     @field_validator("ALGORITHM")
     @classmethod
